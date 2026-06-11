@@ -23,13 +23,16 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    iResult = createClientSocket(argv[1]);
+    // SOCKET ListenSocket = createServerSocket(argv[1]);
+    // SOCKET ConnectSocket = createClientSocket(argv[1]);
+
+    // iResult = bind(ListenSocket,  );
 
     std::cin.get();
     return 0;
 }
 
-int createServerSocket(char* ip)
+SOCKET createServerSocket(char *ip)
 {
     struct addrinfo *result = NULL, *ptr = NULL, hints;
 
@@ -45,17 +48,46 @@ int createServerSocket(char* ip)
     SOCKET ListenSocket = INVALID_SOCKET;
 
     ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
-    
-    if(ListenSocket == INVALID_SOCKET){
+
+    if (ListenSocket == INVALID_SOCKET)
+    {
         printf("error at socket(): %ld\n", WSAGetLastError());
         freeaddrinfo(result);
         WSACleanup();
         return 1;
     }
 
+    printf("server socket has been created \n");
+
+    iResult = bind(ListenSocket, result->ai_addr, (int)result->ai_addrlen);
+    if (iResult)
+    {
+        printf("bind failed with error: %ld \n", WSAGetLastError());
+        freeaddrinfo(result);
+        closesocket(ListenSocket);
+        WSACleanup();
+        return 1;
+    }
+    else
+    {
+        printf("bind successful \n");
+        freeaddrinfo(result);
+    }
+
+
+    // socket is listening 
+    if (listen(ListenSocket, SOMAXCONN) == SOCKET_ERROR)
+    {
+        printf("listen failed with error: %ld \n", WSAGetLastError());
+        closesocket(ListenSocket);
+        WSACleanup();
+        return 1;
+    }
+
+    return ListenSocket;
 }
 
-int createClientSocket(char *ip)
+SOCKET createClientSocket(char *ip)
 {
     struct addrinfo *result = NULL, *ptr = NULL, hints;
 
@@ -86,5 +118,6 @@ int createClientSocket(char *ip)
         return 1;
     }
 
-    return 0;
+    printf("client socket has been opened \n");
+    return ConnectSocket;
 }

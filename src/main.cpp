@@ -4,7 +4,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
-#define DEFAULT_PORT "27015"
+#define DEFAULT_PORT "8080"
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -14,7 +14,7 @@ int createClientSocket(char *ip);
 int main(int argc, char **argv)
 {
 
-    std::cout << "Hello, World\n"
+    std::cout << "Hello, Woddrld\n"
               << std::endl;
 
     WSADATA wsaData;
@@ -31,10 +31,12 @@ int main(int argc, char **argv)
         printf("winsock has been initialized \n");
     }
 
-    int a = createServerSocket("8080");
-    printf("%d \n");
-    // SOCKET ConnectSocket = createClientSocket(argv[1]);
-
+    char port[] = {'8', '0', '8','0', '\0'};
+    //int a = createServerSocket(port);
+    
+    int b = createClientSocket(port);
+    
+    
     // iResult = bind(ListenSocket,  );
 
     std::cin.get();
@@ -117,6 +119,7 @@ int createServerSocket(char *ip)
 
 
 
+
 int createClientSocket(char *ip)
 {
     struct addrinfo *result = NULL, *ptr = NULL, hints;
@@ -142,8 +145,9 @@ int createClientSocket(char *ip)
 
     SOCKET ConnectSocket = INVALID_SOCKET;
 
-    ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
 
+    // create socket for client
+    ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
     if (ConnectSocket == INVALID_SOCKET)
     {
         printf("error at socket(): %ld\n", WSAGetLastError());
@@ -153,9 +157,30 @@ int createClientSocket(char *ip)
     }
     else
     {
-
         printf("client socket has been opened \n");
     }
+
+
+    // set up socket to 
+    iResult = connect(ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
+    if (iResult == SOCKET_ERROR)
+    {
+        closesocket(ConnectSocket);
+        ConnectSocket = INVALID_SOCKET;
+    }
+
+    freeaddrinfo(result);
+
+    if (ConnectSocket == INVALID_SOCKET)
+    {
+        printf("couldnt connect to server");
+        WSACleanup();
+    } else {
+
+        printf("the soccket is listening ayeee !!!?");
+    }
+    
+
 
     return 0;
 }

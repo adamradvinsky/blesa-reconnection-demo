@@ -5,6 +5,7 @@ project("state-machine-vulnerability")
 
 add_executable(smv src/main.cpp)
 
+
 target_link_libraries(smv
     ws2_32
 )

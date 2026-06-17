@@ -128,6 +128,54 @@ smv/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/build
 .PHONY : smv/fast
 
+src/Client.obj: src/Client.cpp.obj
+.PHONY : src/Client.obj
+
+# target to build an object file
+src/Client.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/src/Client.cpp.obj
+.PHONY : src/Client.cpp.obj
+
+src/Client.i: src/Client.cpp.i
+.PHONY : src/Client.i
+
+# target to preprocess a source file
+src/Client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/src/Client.cpp.i
+.PHONY : src/Client.cpp.i
+
+src/Client.s: src/Client.cpp.s
+.PHONY : src/Client.s
+
+# target to generate assembly for a file
+src/Client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/src/Client.cpp.s
+.PHONY : src/Client.cpp.s
+
+src/Server.obj: src/Server.cpp.obj
+.PHONY : src/Server.obj
+
+# target to build an object file
+src/Server.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/src/Server.cpp.obj
+.PHONY : src/Server.cpp.obj
+
+src/Server.i: src/Server.cpp.i
+.PHONY : src/Server.i
+
+# target to preprocess a source file
+src/Server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/src/Server.cpp.i
+.PHONY : src/Server.cpp.i
+
+src/Server.s: src/Server.cpp.s
+.PHONY : src/Server.s
+
+# target to generate assembly for a file
+src/Server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/src/Server.cpp.s
+.PHONY : src/Server.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -161,6 +209,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... smv
+	@echo ... src/Client.obj
+	@echo ... src/Client.i
+	@echo ... src/Client.s
+	@echo ... src/Server.obj
+	@echo ... src/Server.i
+	@echo ... src/Server.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

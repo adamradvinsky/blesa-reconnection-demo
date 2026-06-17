@@ -8,6 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/state-machine-vulneratbility/src/Client.cpp" "CMakeFiles/smv.dir/src/Client.cpp.obj" "gcc" "CMakeFiles/smv.dir/src/Client.cpp.obj.d"
+  "C:/state-machine-vulneratbility/src/Server.cpp" "CMakeFiles/smv.dir/src/Server.cpp.obj" "gcc" "CMakeFiles/smv.dir/src/Server.cpp.obj.d"
   "C:/state-machine-vulneratbility/src/main.cpp" "CMakeFiles/smv.dir/src/main.cpp.obj" "gcc" "CMakeFiles/smv.dir/src/main.cpp.obj.d"
   )
 

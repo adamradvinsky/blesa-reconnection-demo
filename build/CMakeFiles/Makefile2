@@ -84,12 +84,12 @@ clean: CMakeFiles/smv.dir/clean
 CMakeFiles/smv.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\state-machine-vulneratbility\build\CMakeFiles --progress-num=1,2 "Built target smv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\state-machine-vulneratbility\build\CMakeFiles --progress-num=1,2,3,4 "Built target smv"
 .PHONY : CMakeFiles/smv.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/smv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\state-machine-vulneratbility\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\state-machine-vulneratbility\build\CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/smv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\state-machine-vulneratbility\build\CMakeFiles 0
 .PHONY : CMakeFiles/smv.dir/rule
@@ -101,7 +101,7 @@ smv: CMakeFiles/smv.dir/rule
 # codegen rule for target.
 CMakeFiles/smv.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\smv.dir\build.make CMakeFiles/smv.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\state-machine-vulneratbility\build\CMakeFiles --progress-num=1,2 "Finished codegen for target smv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\state-machine-vulneratbility\build\CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target smv"
 .PHONY : CMakeFiles/smv.dir/codegen
 
 # clean rule for target.

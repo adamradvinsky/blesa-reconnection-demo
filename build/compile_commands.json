@@ -4,5 +4,17 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -o CMakeFiles\\smv.dir\\src\\main.cpp.obj -c C:\\state-machine-vulneratbility\\src\\main.cpp",
   "file": "C:/state-machine-vulneratbility/src/main.cpp",
   "output": "CMakeFiles/smv.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/state-machine-vulneratbility/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -o CMakeFiles\\smv.dir\\src\\Client.cpp.obj -c C:\\state-machine-vulneratbility\\src\\Client.cpp",
+  "file": "C:/state-machine-vulneratbility/src/Client.cpp",
+  "output": "CMakeFiles/smv.dir/src/Client.cpp.obj"
+},
+{
+  "directory": "C:/state-machine-vulneratbility/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -o CMakeFiles\\smv.dir\\src\\Server.cpp.obj -c C:\\state-machine-vulneratbility\\src\\Server.cpp",
+  "file": "C:/state-machine-vulneratbility/src/Server.cpp",
+  "output": "CMakeFiles/smv.dir/src/Server.cpp.obj"
 }
 ]

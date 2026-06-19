@@ -4,6 +4,12 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
+class Server
+{
 
-int SetUpServerSocket();
-
+public:
+    Server();
+private:
+    int SetUpServerSocket();
+    
+};

@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
     if (input == 'a')
     {
-        int a = SetUpServerSocket();
+        Server *server = new Server();
     }
     else
     {

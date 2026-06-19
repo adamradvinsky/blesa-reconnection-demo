@@ -1,9 +1,12 @@
 #include "../include/Server.h"
-
-
 #define DEFAULT_PORT "27015"
 
-int SetUpServerSocket()
+
+Server::Server(){
+    SetUpServerSocket();
+}
+
+int Server::SetUpServerSocket()
 {
     printf("opening up a server socket \n");
     int iResult;
@@ -81,7 +84,8 @@ int SetUpServerSocket()
 
     do
     {
-        iResult = recv(ClientSocket, buffer, 256, 0);
+        memset(buffer, 0, 256);
+        iResult = recv(ClientSocket, buffer, 256 + 1, 0);
 
         if (iResult == 0)
         {
@@ -101,7 +105,7 @@ int SetUpServerSocket()
 
     } while (iResult > 0);
 
-    // no longer need teh server socket (optional)
+    // no longer need the server socket 
     closesocket(ListenSocket);
 
     return 9;

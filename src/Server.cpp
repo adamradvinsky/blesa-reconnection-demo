@@ -103,5 +103,5 @@ int SetUpServerSocket()
     // no longer need teh server socket (optional)
     closesocket(ListenSocket);
 
-    return 0;
+    return 9;
 }

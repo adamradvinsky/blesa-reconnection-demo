@@ -55,9 +55,9 @@ int SetUpClientSocket()
         printf("the socckets are connected !!!?");
     }
 
-    //SendMessage(ConnectSocket);
+    SendMessage(ConnectSocket);
 
-    return 0;
+    return 9;
 }
 
 void SendMessage(SOCKET socket)

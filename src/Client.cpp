@@ -3,14 +3,9 @@
 
 Client::Client()
 {
-    if (SetUpClientSocket() == 1)
-    {
-        printf("client set up successfuly \n");
-    }
-    else
-    {
-        printf("client wasnt created due to an error \n");
-    }
+   
+
+    
 }
 
 void Client::setSocket(SOCKET newsocket)
@@ -70,12 +65,22 @@ int Client::SetUpClientSocket()
     if (ConnectSocket == INVALID_SOCKET)
     {
         printf("couldnt connect to server \n");
+        
+        printf("aaa \n");
+        printf("aaa \n");
+        printf("aaa \n");printf("aaa \n");
+        printf("aaa \n");printf("aaa \n");
+        printf("aaa \n");
+        printf("aaa \n");
+        printf("aaa \n");
+        printf("aaa \n");
+        printf("aaa \n");
         WSACleanup();
         return -1;
     }
     else
     {
-        printf("the socckets are connected !!!? \n");
+        printf("the sockets are connected !!!? \n");
     }
     return 1;
 }

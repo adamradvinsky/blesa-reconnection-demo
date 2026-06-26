@@ -13,9 +13,9 @@ public:
     void setSocket(SOCKET socket);
     SOCKET getSocket();
     void sendMessage(char *message);
+    int SetUpClientSocket();
 
 private:
     SOCKET curSocket;
 
-    int SetUpClientSocket();
 };

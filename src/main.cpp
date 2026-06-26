@@ -44,22 +44,32 @@ int main(int argc, char **argv)
     else
     {
         Client *client = new Client();
-        printf("skibidi ! \n");
-        char text[256];
-
-        do
+        if (client->SetUpClientSocket() == 1)
         {
-            printf("send message: ");
-            std::cin >> text;
+            char text[256];
 
-            printf("going to try and send: %s \n", text);
+            do
+            {
+                printf("send message: ");
+                std::cin >> text;
 
-            client->sendMessage(text);
+                printf("going to try and send: %s \n", text);
 
-        } while (text[0] != 'b');
+                client->sendMessage(text);
+
+            } while (text[0] != 'b');
+        }
+        else
+        {
+
+            std::cout << "press enter to exit ";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cin.get();
+        }
     }
 
     std::cout << "press enter to exit ";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
     return 0;
 }

@@ -26,7 +26,7 @@ SOCKET Server::SetUpServerSocket()
 
     iResult = getaddrinfo(NULL, DEFAULT_PORT, &hints, &result);
 
-    SOCKET ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
+    SOCKET ListenSocket;
 
     // create socket
     ListenSocket = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
@@ -83,6 +83,7 @@ void Server::ActiveServerSocket(SOCKET ListenSocket)
     {
         SOCKET privateSocket = INVALID_SOCKET;
         // listening until find a connection
+        printf("waiting for a connection request \n");
         privateSocket = accept(ListenSocket, NULL, NULL);
         if (privateSocket == INVALID_SOCKET)
         {
@@ -92,9 +93,7 @@ void Server::ActiveServerSocket(SOCKET ListenSocket)
             return;
         }
         printf("sending off a socket to a private connection with client \n");
-        PrivateServerConnection(privateSocket);
-
-        printf(" ok it returned \n");
+        CreateConnection(privateSocket);
     }
 
     WSACleanup();
@@ -102,8 +101,73 @@ void Server::ActiveServerSocket(SOCKET ListenSocket)
     return;
 }
 
-void Server::PrivateServerConnection(SOCKET privateSocket)
+void Server::CreateConnection(SOCKET privateSocket)
 {
+
+    char buffer[256];
+    // recieve name
+    memset(buffer, 0, 256);
+    int iResult = recv(privateSocket, buffer, 255, 0);
+
+    // check if have seen this client before
+    for (int i = 0; i < 5; i++)
+    {
+        if (savedClients[i].name == buffer)
+        {
+            if (savedClients[i].LTK == LTK)
+            {
+                // we chilin let him through
+                PrivateServerConnectionEnCrypted(privateSocket);
+            }
+            else
+            {
+                PrivateServerConnectionUnEnCrypted(privateSocket);
+                // just do unencrypted
+            }
+        }
+    }
+
+    // must be first time here so set up handshake
+
+    int b = GenerateLTK();
+    // add name and ltk key to the array
+    PrivateServerConnectionEnCrypted(privateSocket);
+}
+
+bool Server::checkSavedClients(char * name)
+{
+    for (int i = 0; i < 5; i++)
+    {
+        if (savedClients[i].name == name)
+        {
+            // have seen this client before
+            return true;
+        }
+    }
+
+    // have never seen this client before
+    return false;
+}
+int Server::GenerateLTK()
+{
+
+    return 12345;
+}
+
+void Server::PrivateServerConnectionUnEnCrypted(SOCKET privateSocket)
+{
+    // un encrypted
+
+    printf("set up a private and NOT encrypted connection \n");
+    return;
+}
+
+void Server::PrivateServerConnectionEnCrypted(SOCKET privateSocket)
+{
+
+    printf("set up a private and encrypted connection \n");
+    // safe encrypted
+
     int iResult = 3;
 
     char buffer[256];

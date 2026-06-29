@@ -3,12 +3,13 @@
 
 std::vector<server> Client::savedServers;
 std::string Client::name;
-
+struct addrinfo Client::info;
 
 Client::Client()
 {
     SOCKET clientSocket = INVALID_SOCKET;
     clientSocket = SetUpClientSocket();
+
     if (clientSocket != INVALID_SOCKET)
     {
         connectToServer(clientSocket, &info);
